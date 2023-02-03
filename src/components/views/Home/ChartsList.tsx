@@ -1,6 +1,4 @@
-import { Row, Col } from "antd";
-import React from "react";
-import LandscapeCard from "../../shared/PlaylistCard/LandscapeCard";
+import { Col, Row } from "antd";
 import SqareCard from "../../shared/PlaylistCard/SqareCard";
 
 interface ListType {
@@ -46,7 +44,6 @@ let list: ListType[] = [
     imgSrc:
       "https://mosaic.scdn.co/300/ab67616d00001e0216f90eca8734936f3f8ef7dcab67616d00001e026413fc7cd84907d255024c01ab67616d00001e0287fddb58aaf8d3e730cb9065ab67616d00001e0294787449b7e0638df44c9c17",
   },
-
 ];
 
 export default function ChartsList() {
@@ -55,8 +52,13 @@ export default function ChartsList() {
       <a style={{ fontSize: "1.5rem" }}>Good evening</a>
       <Row gutter={[24, 16]} style={{ marginTop: "1rem" }}>
         {list.map((item, index) => (
-          <Col md={{ span: 6 }} xl={{ span: 4 }}>
-            <SqareCard title={item.title} imgSrc={item.imgSrc} key={index} />
+          <Col md={{ span: 6 }} xl={{ span: 4 }} key={index}>
+            <SqareCard
+              id={item.id}
+              title={item.title}
+              imgSrc={item.imgSrc}
+              key={index}
+            />
           </Col>
         ))}
       </Row>

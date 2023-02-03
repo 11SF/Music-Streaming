@@ -52,8 +52,9 @@ export default function TopRecommendList() {
       <h1 style={{ fontSize: "2rem" }}>Good evening</h1>
       <Row gutter={[16, 10]} style={{ marginTop: "1rem" }}>
         {list.map((item, index) => (
-          <Col md={{ span: 12 }} xl={{ span: 8 }}>
+          <Col md={{ span: 12 }} xl={{ span: 8 }} key={index}>
             <LandscapeCard
+              id={item.id}
               title={item.title}
               imgSrc={item.imgSrc}
               key={index}

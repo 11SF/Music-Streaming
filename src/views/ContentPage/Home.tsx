@@ -1,6 +1,5 @@
-import React from "react";
-import TopRecommendList from "../../components/views/Home/TopRecommendList";
 import ChartsList from "../../components/views/Home/ChartsList";
+import TopRecommendList from "../../components/views/Home/TopRecommendList";
 
 export default function Home() {
   return (

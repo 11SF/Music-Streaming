@@ -1,8 +1,10 @@
-import { Button } from "antd";
-import React from "react";
 import { CaretRightOutlined, PauseOutlined } from "@ant-design/icons";
-
+import { Button, Typography } from "antd";
+import React, { useState } from "react";
+const { Paragraph } = Typography;
+import { useNavigate } from "react-router-dom";
 interface PropType {
+  id: string
   title: string;
   imgSrc: string;
 }
@@ -22,6 +24,8 @@ const cardStyle: React.CSSProperties = {
   textAlign: "start",
   fontSize: "1.1rem",
   position: "static",
+  color: "#000",
+  cursor: "pointer",
 };
 
 const containerStyle: React.CSSProperties = {
@@ -35,30 +39,61 @@ const containerStyle: React.CSSProperties = {
   gap: "1rem",
   flex: 1,
   overflow: "hidden",
-  
 };
 
-export default function SqareCard({ title, imgSrc }: PropType) {
+export default function SqareCard({ id, title, imgSrc }: PropType) {
+  const [playing, setPlaying] = useState(false);
+  const [cardHover, setCardHover] = useState(false);
+  const [btnHover, setBtnHover] = useState(false);
+  const [rows, setRows] = useState(2);
+  const navigate = useNavigate();
   return (
-    <div style={cardStyle}>
+    <div
+      style={cardStyle}
+      onMouseOver={() => {
+        setCardHover(true);
+      }}
+      onMouseLeave={() => {
+        setCardHover(false);
+      }}
+      onClick={() => {
+        if (cardHover) {
+          if (btnHover) {
+            setPlaying(!playing);
+          } else {
+            navigate(`/playlist/${id}`);
+          }
+        }
+      }}
+    >
       <div style={{ width: "auto", height: "auto", position: "relative" }}>
         <img
           src={imgSrc}
           style={{ width: "100%", position: "relative", borderRadius: "10px" }}
         />
-        <Button
-          shape="circle"
-          icon={<CaretRightOutlined />}
-          size="large"
-          type="primary"
-          color="1DB954"
-          style={{ position: "absolute", right: 10, bottom: 10 }}
-        ></Button>
+        {cardHover || playing ? (
+          <Button
+            shape="circle"
+            icon={playing ? <PauseOutlined /> : <CaretRightOutlined />}
+            size="large"
+            type="primary"
+            color="1DB954"
+            onMouseOver={() => {
+              setBtnHover(true);
+            }}
+            onMouseLeave={() => {
+              setBtnHover(false);
+            }}
+            style={{ position: "absolute", right: 10, bottom: 10 }}
+          ></Button>
+        ) : null}
       </div>
 
       <div style={containerStyle}>
         <h1>{title}</h1>
-        <p>Lorem ipsum dolor sit amet consectetur.</p>
+        <Paragraph ellipsis={{ rows }}>
+          Lorem ipsum dolor sit amet consectetur.
+        </Paragraph>
       </div>
     </div>
   );

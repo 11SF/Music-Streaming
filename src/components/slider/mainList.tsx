@@ -3,15 +3,15 @@ import {
   HomeOutlined,
   SearchOutlined,
   DatabaseOutlined,
+  LikeOutlined,
+  PlusSquareOutlined,
 } from "@ant-design/icons";
 import { Menu } from "antd";
-
 interface MenuItemType {
   icon: any;
   lebel: string;
   type: string;
 }
-
 let listItem: MenuItemType[] = [
   {
     icon: HomeOutlined,
@@ -34,12 +34,12 @@ let listItem: MenuItemType[] = [
     type: "divider",
   },
   {
-    icon: DatabaseOutlined,
+    icon: PlusSquareOutlined,
     lebel: "Create Playlist",
     type: "",
   },
   {
-    icon: DatabaseOutlined,
+    icon: LikeOutlined,
     lebel: "Liked songs",
     type: "",
   },
@@ -47,7 +47,7 @@ let listItem: MenuItemType[] = [
 
 const menuStyles: React.CSSProperties = {
   padding: "2rem 0",
-  textAlign: "start"
+  textAlign: "start",
 };
 
 export default function MainList() {

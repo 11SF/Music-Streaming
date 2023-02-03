@@ -14,7 +14,7 @@ This is a clone of the Spotify UI built with React and Ant Design.
 
 The following dependencies are used in this project:
 
-"dependencies": {
+`"dependencies": {
 "@reduxjs/toolkit": "^1.9.2",
 "antd": "^5.1.7",
 "axios": "^1.3.0",
@@ -22,7 +22,7 @@ The following dependencies are used in this project:
 "react-dom": "^18.2.0",
 "react-redux": "^8.0.5",
 "react-router-dom": "^6.8.0"
-}
+}`
 
 ## How to run the project
 
